@@ -1,0 +1,19 @@
+<div class="form-group">
+  <label for="title">Title</label>
+  <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control" />
+</div>
+<div class="form-group">
+  <label for="snippet">Snippet</label>
+  <textarea name="snippet" id="snippet" class="form-control" style="min-height: 60px"><%= article.snippet %></textarea>
+</div>
+<div class="form-group mb-4">
+  <label for="markdown">Markdown</label>
+  <textarea required name="markdown" id="markdown" class="form-control"
+    style="min-height: 350px"><%= article.markdown %></textarea>
+</div>
+<% if (user && (!article.title || user.id === article.author.id)) { %>
+<a href="/" class="btn btn-secondary">Cancel</a>
+<button type="submit" class="btn btn-primary">Save</button>
+<% } else { %>
+<div class="text-muted">This is view only, you can't edit article</div>
+<% } %>
